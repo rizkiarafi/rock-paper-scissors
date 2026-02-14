@@ -1,9 +1,39 @@
-Rock Paper Scissors is a simple browser-based game built using vanilla JavaScript, HTML, and CSS. The project demonstrates basic DOM manipulation, event handling, game logic, and state management without using any external libraries or frameworks. Players choose between rock, paper, or scissors, the computer generates a random choice, and the winner is determined using standard game rules. The game updates the UI dynamically to display results, scores, and choices in real time.
+# Rock Paper Scissors Game (JavaScript)
 
-This project is suitable for beginners who want to understand how JavaScript interacts with the DOM, how to structure simple game logic, and how to manage user input and program state. It can be used as a learning project, practice project, or starter template for more advanced browser games.
+A simple **Rock–Paper–Scissors** console game made using JavaScript.  
+The player plays against a bot, and the game runs for **5 rounds**.
 
-To run the project, simply open the index.html file in a browser. No installation, build tools, or dependencies are required. All logic is handled directly in JavaScript.
+## How It Works
 
-Game rules are simple: rock beats scissors, scissors beats paper, and paper beats rock. If both the player and computer choose the same option, the result is a draw.
+- Player inputs their choice using a `prompt()`:
+  - `rock`
+  - `paper`
+  - `scissors`
+- The bot randomly chooses between Rock, Paper, or Scissors
+- The game:
+  - Compares both choices
+  - Updates the score
+  - Displays results in the console
+- After 5 rounds, the final winner is announced
 
-You are free to modify, expand, or reuse this project for learning, personal use, or educational purposes.
+## Game Rules
+
+- Rock beats Scissors
+- Scissors beats Paper
+- Paper beats Rock
+- Same choice = Draw
+
+## Features
+
+- Score tracking
+- Round counter
+- Random bot choice
+- Win / Lose / Draw system
+- Final match result
+
+## How to Run
+
+1. Open the file in a browser
+2. Open **Console** (`F12` or `Right Click → Inspect → Console`)
+3. The game will start automatically
+4. Enter your choice in the popup prompt
