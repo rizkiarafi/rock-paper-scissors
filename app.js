@@ -29,11 +29,11 @@ function playGame() {
       getResult(botChoice, "lose", "win", "draw");
     }
     roundCount++;
+    console.log(`Yours: ${humanChoice} vs Bot: ${botChoice}`);
     console.log(`Your score: ${humanScore} || Bot score: ${botScore}`);
   }
 
   function getResult(botChoice, result1, result2, result3) {
-    console.log(`Bot choice is: ${botChoice}`);
     switch (botChoice.toLowerCase()) {
       case "rock":
         console.log(checkResult(result1));
