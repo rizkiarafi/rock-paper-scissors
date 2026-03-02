@@ -1,28 +1,30 @@
-const rules = {
-  rock: { rock: "draw", paper: "lose", scissors: "win" },
-  paper: { rock: "win", paper: "draw", scissors: "lose" },
-  scissors: { rock: "lose", paper: "win", scissors: "draw" },
-};
-
 playGame();
 
 function playGame() {
+  const humanChoiceButtonContainer = document.querySelector("#human-choice");
+
+  const rules = {
+    rock: { rock: "draw", paper: "lose", scissors: "win" },
+    paper: { rock: "win", paper: "draw", scissors: "lose" },
+    scissors: { rock: "lose", paper: "win", scissors: "draw" },
+  };
+
   let humanScore = 0;
   let botScore = 0;
   let roundCounter = 1;
 
-  while (roundCounter <= 5) {
-    playRound();
-    roundCounter++;
-  }
-
-  if (humanScore > botScore) console.log("You've won the game!");
-  else if (humanScore < botScore) console.log("You've lost the game!");
-  else console.log("The match has ended evenly!");
-
-  function playRound() {
-    const humanSelection = getHumanChoice().toLowerCase();
+  humanChoiceButtonContainer.addEventListener("click", (e) => {
+    const humanSelection = getHumanChoice(e).toLowerCase();
     const botSelection = getBotChoice().toLowerCase();
+
+    playRound(humanSelection, botSelection);
+  });
+
+  // if (humanScore > botScore) console.log("You've won the game!");
+  // else if (humanScore < botScore) console.log("You've lost the game!");
+  // else console.log("The match has ended evenly!");
+
+  function playRound(humanSelection, botSelection) {
     const roundResult = rules[humanSelection][botSelection];
 
     console.log(`||Round ${roundCounter}||`);
@@ -47,8 +49,10 @@ function playGame() {
   }
 }
 
-function getHumanChoice() {
-  return prompt("What is your handsign?");
+function getHumanChoice(e) {
+  if (e.target.id === "rock") return "Rock";
+  else if (e.target.id === "paper") return "Paper";
+  else if (e.target.id === "scissors") return "Scissors";
 }
 
 function getBotChoice() {
