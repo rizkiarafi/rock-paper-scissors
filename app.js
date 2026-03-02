@@ -31,14 +31,14 @@ function playGame() {
     switch (gameResult) {
       case "win":
         humanScore++;
-        console.log("You've won the match!");
+        console.log("WIN!");
         break;
       case "lose":
         botScore++;
-        console.log("You've lost against the bot!");
+        console.log("LOSE!");
         break;
       default:
-        console.log("The match has ended evenly");
+        console.log("DRAW!");
     }
   }
 }
