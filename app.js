@@ -23,16 +23,16 @@ function playGame() {
   function playRound() {
     const humanSelection = getHumanChoice().toLowerCase();
     const botSelection = getBotChoice().toLowerCase();
-    const gameResult = rules[humanSelection][botSelection];
+    const roundResult = rules[humanSelection][botSelection];
 
     console.log(`||Round ${roundCounter}||`);
     console.log(`Human: ${humanSelection} || Bot: ${botSelection}`);
-    showResult(gameResult);
+    showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
   }
 
-  function showResult(gameResult) {
-    switch (gameResult) {
+  function showResult(roundResult) {
+    switch (roundResult) {
       case "win":
         humanScore++;
         console.log("WIN!");
