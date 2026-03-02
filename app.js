@@ -18,7 +18,11 @@ function playGame() {
       const humanSelection = getHumanChoice(e).toLowerCase();
       const botSelection = getBotChoice().toLowerCase();
 
-      playRound(humanSelection, botSelection);
+      if (roundCounter === 5) {
+        showFinalResult();
+      } else {
+        playRound(humanSelection, botSelection);
+      }
     }
   });
 
@@ -31,12 +35,7 @@ function playGame() {
     showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
 
-    if (roundCounter === 5) {
-      showFinalResult();
-      resetGame();
-    } else {
-      roundCounter++;
-    }
+    roundCounter++;
   }
 
   function showFinalResult() {
