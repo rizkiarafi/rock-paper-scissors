@@ -14,10 +14,12 @@ function playGame() {
   let roundCounter = 1;
 
   humanChoiceButtonContainer.addEventListener("click", (e) => {
-    const humanSelection = getHumanChoice(e).toLowerCase();
-    const botSelection = getBotChoice().toLowerCase();
+    if (e.target.id !== humanChoiceButtonContainer.id) {
+      const humanSelection = getHumanChoice(e).toLowerCase();
+      const botSelection = getBotChoice().toLowerCase();
 
-    playRound(humanSelection, botSelection);
+      playRound(humanSelection, botSelection);
+    }
   });
 
   // if (humanScore > botScore) console.log("You've won the game!");
