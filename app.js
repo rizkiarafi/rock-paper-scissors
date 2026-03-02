@@ -16,6 +16,10 @@ function playGame() {
     roundCounter++;
   }
 
+  if (humanScore > botScore) console.log("You've won the game!");
+  else if (humanScore < botScore) console.log("You've lost the game!");
+  else console.log("The match has ended evenly!");
+
   function playRound() {
     const humanSelection = getHumanChoice().toLowerCase();
     const botSelection = getBotChoice().toLowerCase();
