@@ -1,7 +1,12 @@
 playGame();
 
 function playGame() {
-  const humanChoiceButtonContainer = document.querySelector("#human-choice");
+  const humanChoiceButtonContainer =
+    document.querySelector("#buttons-container");
+
+  const choiceInfoElement = document.querySelector("#choice-info");
+  const humanChoiceElement = choiceInfoElement.querySelector("#human-choice");
+  const botChoiceElement = choiceInfoElement.querySelector("#bot-choice");
 
   const rules = {
     rock: { rock: "draw", paper: "lose", scissors: "win" },
@@ -34,6 +39,10 @@ function playGame() {
 
     console.log(`||Round ${roundCounter}||`);
     console.log(`Human: ${humanSelection} || Bot: ${botSelection}`);
+
+    choiceInfoElement.style.display = "block";
+    humanChoiceElement.textContent = humanSelection;
+    botChoiceElement.textContent = botSelection;
 
     showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
