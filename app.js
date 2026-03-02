@@ -26,8 +26,8 @@ function playGame() {
 
   function playRound(humanSelection, botSelection) {
     const roundResult = rules[humanSelection][botSelection];
-
     console.log(`||Round ${roundCounter}||`);
+    roundCounter++;
     console.log(`Human: ${humanSelection} || Bot: ${botSelection}`);
     showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
