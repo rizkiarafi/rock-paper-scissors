@@ -13,13 +13,16 @@ function playGame() {
   let botScore = 0;
   let roundCounter = 1;
 
+  let hasFinalResultShown = false;
+
   humanChoiceButtonContainer.addEventListener("click", (e) => {
     if (e.target.id !== humanChoiceButtonContainer.id) {
       const humanSelection = getHumanChoice(e).toLowerCase();
       const botSelection = getBotChoice().toLowerCase();
 
       if (roundCounter === 5) {
-        showFinalResult();
+        if (!hasFinalResultShown) showFinalResult();
+        hasFinalResultShown = true;
       } else {
         playRound(humanSelection, botSelection);
       }
