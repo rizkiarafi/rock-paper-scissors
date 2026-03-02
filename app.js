@@ -22,17 +22,27 @@ function playGame() {
     }
   });
 
-  // if (humanScore > botScore) console.log("You've won the game!");
-  // else if (humanScore < botScore) console.log("You've lost the game!");
-  // else console.log("The match has ended evenly!");
-
   function playRound(humanSelection, botSelection) {
     const roundResult = rules[humanSelection][botSelection];
+
     console.log(`||Round ${roundCounter}||`);
-    roundCounter++;
     console.log(`Human: ${humanSelection} || Bot: ${botSelection}`);
+
     showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
+
+    if (roundCounter === 5) {
+      showFinalResult();
+      resetGame();
+    } else {
+      roundCounter++;
+    }
+  }
+
+  function showFinalResult() {
+    if (humanScore > botScore) console.log("You've won the game!");
+    else if (humanScore < botScore) console.log("You've lost the game!");
+    else console.log("The match has ended evenly!");
   }
 
   function showResult(roundResult) {
@@ -48,6 +58,12 @@ function playGame() {
       default:
         console.log("DRAW!");
     }
+  }
+
+  function resetGame() {
+    roundCounter = 1;
+    humanScore = 0;
+    botScore = 0;
   }
 }
 
