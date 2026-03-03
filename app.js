@@ -7,6 +7,7 @@ function playGame() {
   const choiceInfoElement = document.querySelector("#choice-info");
   const humanChoiceElement = choiceInfoElement.querySelector("#human-choice");
   const botChoiceElement = choiceInfoElement.querySelector("#bot-choice");
+  const roundCountElement = document.querySelector("#round-count");
 
   const rules = {
     rock: { rock: "draw", paper: "lose", scissors: "win" },
@@ -48,6 +49,7 @@ function playGame() {
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
 
     roundCounter++;
+    roundCountElement.textContent = `Round ${roundCounter}`;
   }
 
   function showFinalResult() {
