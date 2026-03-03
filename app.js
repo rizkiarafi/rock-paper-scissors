@@ -100,13 +100,13 @@ function playGame() {
   }
 
   function resetGame() {
-    finalSection.style.display = "none";
-    choiceInfoElement.style.display = "none";
-    roundCountElement.textContent = "Choose your handsign!";
-
     setRound(0);
     setHumanScore(0);
     setBotScore(0);
+
+    finalSection.style.display = "none";
+    choiceInfoElement.style.display = "none";
+    roundCountElement.textContent = "Choose your handsign!";
   }
 }
 
