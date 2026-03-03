@@ -104,9 +104,9 @@ function playGame() {
     choiceInfoElement.style.display = "none";
     roundCountElement.textContent = "Choose your handsign!";
 
-    roundCounter = 1;
-    humanScore = 0;
-    botScore = 0;
+    setRound(0);
+    setHumanScore(0);
+    setBotScore(0);
   }
 }
 
