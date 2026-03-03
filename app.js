@@ -11,6 +11,7 @@ function playGame() {
   const roundResultElement = document.querySelector("#round-result");
   const humanScoreElement = document.querySelector("#human-score");
   const botScoreElement = document.querySelector("#bot-score");
+  const finalResultElement = document.querySelector("#final-result");
 
   const rules = {
     rock: { rock: "draw", paper: "lose", scissors: "win" },
@@ -20,20 +21,17 @@ function playGame() {
 
   let humanScore = 0;
   let botScore = 0;
-  let roundCounter = 1;
-
-  let hasFinalResultShown = false;
+  let roundCounter = 0;
 
   humanChoiceButtonContainer.addEventListener("click", (e) => {
-    if (e.target.id !== humanChoiceButtonContainer.id) {
+    if (e.target.id !== humanChoiceButtonContainer.id && roundCounter < 5) {
       const humanSelection = getHumanChoice(e).toLowerCase();
       const botSelection = getBotChoice().toLowerCase();
 
+      playRound(humanSelection, botSelection);
+
       if (roundCounter === 5) {
-        if (!hasFinalResultShown) showFinalResult();
-        hasFinalResultShown = true;
-      } else {
-        playRound(humanSelection, botSelection);
+        showFinalResult();
       }
     }
   });
@@ -56,9 +54,11 @@ function playGame() {
   }
 
   function showFinalResult() {
-    if (humanScore > botScore) console.log("You've won the game!");
-    else if (humanScore < botScore) console.log("You've lost the game!");
-    else console.log("The match has ended evenly!");
+    if (humanScore > botScore)
+      finalResultElement.textContent = "You've won the match!";
+    else if (humanScore < botScore)
+      finalResultElement.textContent = "You've lost the match!";
+    else finalResultElement.textContent = "The match has ended evenly";
   }
 
   function showResult(roundResult) {
