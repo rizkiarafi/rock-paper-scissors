@@ -8,6 +8,7 @@ function playGame() {
   const humanChoiceElement = choiceInfoElement.querySelector("#human-choice");
   const botChoiceElement = choiceInfoElement.querySelector("#bot-choice");
   const roundCountElement = document.querySelector("#round-count");
+  const roundResultElement = document.querySelector("#round-result");
 
   const rules = {
     rock: { rock: "draw", paper: "lose", scissors: "win" },
@@ -62,18 +63,19 @@ function playGame() {
     switch (roundResult) {
       case "win":
         humanScore++;
-        console.log("WIN!");
+        roundResultElement.textContent = "WIN!";
         break;
       case "lose":
         botScore++;
-        console.log("LOSE!");
+        roundResultElement.textContent = "LOSE!";
         break;
       default:
-        console.log("DRAW!");
+        roundResultElement.textContent = "DRAW!";
     }
   }
 
   function resetGame() {
+    hasFinalResultShown = false;
     roundCounter = 1;
     humanScore = 0;
     botScore = 0;
