@@ -5,13 +5,19 @@ function playGame() {
     document.querySelector("#buttons-container");
 
   const choiceInfoElement = document.querySelector("#choice-info");
+
   const humanChoiceElement = choiceInfoElement.querySelector("#human-choice");
   const botChoiceElement = choiceInfoElement.querySelector("#bot-choice");
+
   const roundCountElement = document.querySelector("#round-count");
   const roundResultElement = document.querySelector("#round-result");
+
   const humanScoreElement = document.querySelector("#human-score");
   const botScoreElement = document.querySelector("#bot-score");
-  const finalResultElement = document.querySelector("#final-result");
+
+  const finalSection = document.querySelector("#final-section");
+  const resetGameButton = finalSection.querySelector("#reset-game");
+  const finalResultElement = finalSection.querySelector("#final-result");
 
   const rules = {
     rock: { rock: "draw", paper: "lose", scissors: "win" },
@@ -22,6 +28,8 @@ function playGame() {
   let humanScore = 0;
   let botScore = 0;
   let roundCounter = 0;
+
+  resetGameButton.addEventListener("click", resetGame);
 
   humanChoiceButtonContainer.addEventListener("click", (e) => {
     if (e.target.id !== humanChoiceButtonContainer.id && roundCounter < 5) {
@@ -49,11 +57,11 @@ function playGame() {
     showResult(roundResult);
     console.log(`Human score: ${humanScore} || Bot score: ${botScore}`);
 
-    roundCounter++;
-    roundCountElement.textContent = `Round ${roundCounter}`;
+    setRound(roundCounter + 1);
   }
 
   function showFinalResult() {
+    finalSection.style.display = "block";
     if (humanScore > botScore)
       finalResultElement.textContent = "You've won the match!";
     else if (humanScore < botScore)
@@ -64,13 +72,11 @@ function playGame() {
   function showResult(roundResult) {
     switch (roundResult) {
       case "win":
-        humanScore++;
-        humanScoreElement.textContent = humanScore;
+        setHumanScore(humanScore + 1);
         roundResultElement.textContent = "WIN!";
         break;
       case "lose":
-        botScore++;
-        botScoreElement.textContent = botScore;
+        setBotScore(botScore + 1);
         roundResultElement.textContent = "LOSE!";
         break;
       default:
@@ -78,8 +84,26 @@ function playGame() {
     }
   }
 
+  function setHumanScore(score) {
+    humanScore = score;
+    humanScoreElement.textContent = humanScore;
+  }
+
+  function setBotScore(score) {
+    botScore = score;
+    botScoreElement.textContent = botScore;
+  }
+
+  function setRound(round) {
+    roundCounter = round;
+    roundCountElement.textContent = `Round ${roundCounter}`;
+  }
+
   function resetGame() {
-    hasFinalResultShown = false;
+    finalSection.style.display = "none";
+    choiceInfoElement.style.display = "none";
+    roundCountElement.textContent = "Choose your handsign!";
+
     roundCounter = 1;
     humanScore = 0;
     botScore = 0;
